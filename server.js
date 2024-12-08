@@ -1,14 +1,19 @@
 const WebSocket = require("ws");
 
+// Определяем порт, на котором будет работать сервер
 const port = process.env.PORT || 8080;
-const ws = new WebSocket("wss://my-chat-extension-back.railway.internal");
+
+// Создаём WebSocket сервер
+const wss = new WebSocket.Server({ port });
 
 console.log(`WebSocket server is running on port ${port}`);
-console.log("WebSocket server is running on ws://localhost:8080");
 
-const clients = new Map(); // Храним имена пользователей и их соединения
+// Храним имена пользователей и их соединения
+const clients = new Map();
 
 wss.on("connection", (ws) => {
+  console.log("A new client connected!");
+
   ws.on("message", (message) => {
     const data = JSON.parse(message);
 
