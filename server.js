@@ -1,7 +1,7 @@
 const WebSocket = require("ws");
 
 const port = process.env.PORT || 8080;
-const ws = new WebSocket("wss://mychatserver.up.railway.app");
+const ws = new WebSocket("wss://my-chat-extension-back.railway.internal");
 
 console.log(`WebSocket server is running on port ${port}`);
 console.log("WebSocket server is running on ws://localhost:8080");
